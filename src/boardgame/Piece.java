@@ -6,8 +6,6 @@ public class Piece {
 	//association:
 	private Board board;
 	
-	public Piece() {
-	}
 
 	protected Piece(Board board) {
 		this.board = board;
