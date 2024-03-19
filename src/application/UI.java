@@ -52,16 +52,30 @@ public class UI {
 		for (int c = 0; c < pieces.length; c++) {
 			System.out.print((8 - c) + " ");
 			for (int l = 0; l < pieces.length; l++) {
-				printPiece(pieces[c][l]);
+				printPiece(pieces[c][l],false);
 			}
 			System.out.println();
 		}
 		System.out.println("  a b c d e f g h");
 	}
-
-	private static void printPiece(ChessPiece piece) {
+	
+	public static void printBoard(ChessPiece[][] pieces, boolean[][] possibleMoves) {
+		for (int c = 0; c < pieces.length; c++) {
+			System.out.print((8 - c) + " ");
+			for (int l = 0; l < pieces.length; l++) {
+				printPiece(pieces[c][l], possibleMoves[c][l]);
+			}
+			System.out.println();
+		}
+		System.out.println("  a b c d e f g h");
+	}
+	
+	private static void printPiece(ChessPiece piece, boolean background) {
+		if(background) {
+			System.out.print(ANSI_GREEN_BACKGROUND);
+		}
 		if (piece == null) {
-			System.out.print("-");
+			System.out.print("-"+ ANSI_RESET);
 		} else {
 			if (piece.getColor() == Color.WHITE) {
 				System.out.print(ANSI_WHITE + piece + ANSI_RESET);
